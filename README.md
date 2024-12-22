@@ -53,7 +53,7 @@ CHAT_MODEL = 'gpt-4o-mini'
 class PostGenerator:
     # ...existing code...
 
-    def generate_tweet(self, user_background, user_interests, target_audience, current_events):
+    def generate_tweet(self, user_background, target_audience, event):
         # ...existing code...
 
 def format_article(a):
@@ -63,13 +63,13 @@ def get_current_events(theme):
     # ...existing code...
 
 background = "software, engineering, science, business. Worked at a startup three years as a head of engineering and at larger companies as a software engineer."
-interests = "coding, open-source projects, hackathons, and startups"
 target_audience = "developers and entrepreneurs"
 theme = "technology, science, controversial"
 
 current_events = get_current_events(theme)
+event = current_events[0]
 post_generator = PostGenerator()
-tweet = post_generator.generate_tweet(background, interests, target_audience, current_events)
+tweet = post_generator.generate_tweet(background, target_audience, event)
 print(tweet)
 ```
 
