@@ -23,8 +23,8 @@ This project generates formatted tweets based on user background, interests, tar
 
 4. Create a `.env` file in the root directory and add your OpenAI and News API keys:
     ```plaintext
-    OPENAI_API_KEY=your_openai_api_key
-    NEWS_API_KEY=your_news_api_key
+    OPENAI_API_KEY=your_openai_api_key # https://openai.com/api/pricing/
+    NEWS_API_KEY=your_news_api_key # https://newsapi.org/pricing
     ```
 
 ## Usage
