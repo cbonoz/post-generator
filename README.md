@@ -1,6 +1,6 @@
 # Twitter Post Generator
 
-This project generates formatted tweets based on user background, interests, target audience, and current events using OpenAI's GPT-4 model.
+This project uses OpenAI's GPT-4 and DALL-E models to generate tweets and corresponding images based on current events.
 
 ## Setup
 
@@ -29,49 +29,66 @@ This project generates formatted tweets based on user background, interests, tar
 
 ## Usage
 
-1. Open the Jupyter notebook:
-    ```bash
-    jupyter notebook twitter.ipynb
-    ```
+### Generate a Tweet
 
-2. Follow the instructions in the notebook to generate tweets.
-
-## Example
-
-Here's an example of how to use the `PostGenerator` class to generate a tweet:
+The `PostGenerator` class can be used to generate tweets based on user background, target audience, and current events.
 
 ```python
-from openai import OpenAI
-import os
-from dotenv import load_dotenv
-import requests
+from twitter import PostGenerator, get_current_events
 
-load_dotenv()
-
-CHAT_MODEL = 'gpt-4o-mini'
-
-class PostGenerator:
-    # ...existing code...
-
-    def generate_tweet(self, user_background, target_audience, event):
-        # ...existing code...
-
-def format_article(a):
-    # ...existing code...
-
-def get_current_events(theme):
-    # ...existing code...
-
-background = "software, engineering, science, business. Worked at a startup three years as a head of engineering and at larger companies as a software engineer."
-target_audience = "developers and entrepreneurs"
+background = "software, engineering, science, entrepreneurship"
+target_audience = "developers, entrepreneurs"
 theme = "technology, science, controversial"
 
 current_events = get_current_events(theme)
-event = current_events[0]
-post_generator = PostGenerator()
-tweet = post_generator.generate_tweet(background, target_audience, event)
-print(tweet)
+event = current_events[0]  # or select a random event
+
+generator = PostGenerator()
+tweet = generator.generate_tweet(background, target_audience, event)
+print('Generated Tweet:\n', tweet)
 ```
+
+### Generate an Image from a Post
+
+You can also generate an image based on the generated tweet.
+
+```python
+image_response = generator.generate_image_from_post(tweet)
+print(image_response)
+```
+
+### Save Tweet and Image
+
+Save the generated tweet and image to the output directory.
+
+```python
+generator.save_tweet_and_image(tweet, image_response)
+```
+
+### Rate and Improve a Tweet
+
+You can rate the effectiveness of a tweet and get suggestions for improvement.
+
+```python
+rating = generator.rate_tweet(tweet)
+print('Rating and Suggestions:\n', rating)
+
+improved_tweet = generator.improve_tweet(tweet, rating)
+print('Improved Tweet:\n', improved_tweet)
+```
+
+### Fetch Current Events
+
+Fetch current events based on a theme.
+
+```python
+events = get_current_events("technology")
+print('Current Events:\n', events)
+```
+
+## Example Notebook
+
+Refer to the `twitter.ipynb` notebook for a complete example of generating and saving tweets and images.
 
 ## License
 
