@@ -34,7 +34,6 @@ This project uses OpenAI's GPT-4 and DALL-E models to generate tweets and corres
 The `PostGenerator` class can be used to generate tweets based on user background, target audience, and current events.
 
 ```python
-from twitter import PostGenerator, get_current_events
 
 background = "software, engineering, science, entrepreneurship"
 target_audience = "developers, entrepreneurs"
